@@ -7,7 +7,6 @@ import VueTelInputVuetify from 'vue-tel-input-vuetify/lib';
 Vue.use(VueTelInputVuetify, {
   vuetify
 });
-
 Vue.config.productionTip = false;
 
 new Vue({
