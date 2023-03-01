@@ -2,66 +2,30 @@
   <v-container>
     <v-card width="800" style="margin: 0 auto">
       <div style="width: 150px"><v-img :src="wiseStampLogo" /></div>
-      <v-card-title class="justify-center"
-        >Please enter your personnal details here:</v-card-title
-      >
+      <v-card-title class="justify-center">Please enter your personnal details here:</v-card-title>
       <v-card-text>
         <div class="text-fields-block">
           <v-form ref="form" v-model="valid" lazy-validation>
-            <v-text-field
-              v-model="fullName"
-              :rules="nameRules"
-              label="Full name"
-              required
-            ></v-text-field>
+            <v-text-field v-model="fullName" :rules="nameRules" label="Full name" required></v-text-field>
 
-            <v-text-field
-              v-model="jobTitle"
-              :rules="titleRules"
-              label="Title"
-              required
-            ></v-text-field>
+            <v-text-field v-model="jobTitle" :rules="titleRules" label="Title" required></v-text-field>
 
-            <v-text-field
-              v-model="company"
-              :rules="companyRules"
-              label="Company"
-              required
-            ></v-text-field>
+            <v-text-field v-model="company" :rules="companyRules" label="Company" required></v-text-field>
 
-            <v-text-field
-              v-model="email"
-              :rules="emailRules"
-              label="E-mail address"
-              required
-            ></v-text-field>
+            <v-text-field v-model="email" :rules="emailRules" label="E-mail address" required></v-text-field>
 
-            <vue-tel-input-vuetify
-              @input="validateAndSetPhone"
-              :error="!isNumberValid"
-            ></vue-tel-input-vuetify>
+            <vue-tel-input-vuetify @input="validateAndSetPhone" :error="!isNumberValid"></vue-tel-input-vuetify>
 
-            <v-text-field
-              v-model="address"
-              :rules="nameRules"
-              label="Address"
-              required
-            ></v-text-field>
+            <v-text-field v-model="address" :rules="nameRules" label="Address" required></v-text-field>
           </v-form>
         </div>
         <div class="py-10 your-template" v-if="yourTemplate">
           <div v-html="yourTemplate"></div>
-          <v-btn
-            :loading="isLoading"
-            :disabled="!valid || !isNumberValid"
-            @click="yourTemplate = ''"
+          <v-btn :loading="isLoading" :disabled="!valid || !isNumberValid" @click="yourTemplate = ''"
             >Select another template</v-btn
           >
         </div>
-        <div
-          class="d-flex justify-space-around py-10"
-          v-if="!yourTemplate && !!templates.length"
-        >
+        <div class="d-flex justify-space-around py-10" v-if="!yourTemplate && !!templates.length">
           <div v-for="(template, i) in templates" :key="i">
             <div v-html="template.html"></div>
             <v-btn
@@ -83,34 +47,31 @@
 
 <script>
 /* eslint-disable */
-import axiosInstance from "../axios";
-import wiseStampLogo from "../assets/wiseStampLogo.png";
+import axiosInstance from '../axios';
+import wiseStampLogo from '../assets/wiseStampLogo.png';
 
 export default {
-  name: "Form",
+  name: 'Form',
 
   data: () => ({
     wiseStampLogo,
     valid: true,
-    fullName: "",
-    nameRules: [(v) => !!v || "Name is required"],
-    email: "",
-    emailRules: [
-      (v) => !!v || "E-mail is required",
-      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-    ],
-    jobTitle: "",
-    titleRules: [(v) => !!v || "Title is required"],
-    company: "",
-    companyRules: [(v) => !!v || "Company is required"],
+    fullName: '',
+    nameRules: [(v) => !!v || 'Name is required'],
+    email: '',
+    emailRules: [(v) => !!v || 'E-mail is required', (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid'],
+    jobTitle: '',
+    titleRules: [(v) => !!v || 'Title is required'],
+    company: '',
+    companyRules: [(v) => !!v || 'Company is required'],
     phoneNumber: null,
     isNumberValid: true,
-    address: "",
+    address: '',
     templates: [],
-    yourTemplate: "",
+    yourTemplate: '',
     isLoading: false,
     snackbarStatus: false,
-    snackBarText: "",
+    snackBarText: ''
   }),
   async created() {
     this.getTemplates();
@@ -126,7 +87,7 @@ export default {
     async getTemplates() {
       try {
         this.$data.isLoading = true;
-        const { data } = await axiosInstance.get("/template");
+        const { data } = await axiosInstance.get('/template');
         this.$data.templates = data;
       } catch (e) {
         const message = `Something went wrong: ${e.message}`;
@@ -151,13 +112,13 @@ export default {
         company: this.$data.company,
         email: this.$data.email,
         phone: this.$data.phoneNumber,
-        address: this.$data.address,
+        address: this.$data.address
       };
       try {
         this.$data.isLoading = true;
-        const { data } = await axiosInstance.post("/template", {
+        const { data } = await axiosInstance.post('/template', {
           form,
-          templateTitle: value,
+          templateTitle: value
         });
         this.$data.yourTemplate = data.html;
       } catch (e) {
@@ -167,8 +128,8 @@ export default {
       } finally {
         this.$data.isLoading = false;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>

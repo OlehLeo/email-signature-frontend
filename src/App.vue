@@ -8,13 +8,13 @@
 
 <script>
 /* eslint-disable */
-import Form from "./components/Form";
+import Form from './components/Form';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    Form,
-  },
+    Form
+  }
 };
 </script>
 <style scoped>
