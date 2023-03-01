@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/'
+  baseURL: 'https://email-signature-backend-lb5zrlbtk-olehleolvivua.vercel.app/api/'
 });
 
 export default axiosInstance;
