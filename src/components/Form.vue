@@ -19,14 +19,14 @@
             <v-text-field v-model="address" :rules="nameRules" label="Address" required></v-text-field>
           </v-form>
         </div>
-        <div class="py-10 your-template" v-if="yourTemplate">
+        <div class="your-template" v-if="yourTemplate">
           <div v-html="yourTemplate"></div>
           <v-btn :loading="isLoading" :disabled="!valid || !isNumberValid" @click="yourTemplate = ''"
             >Select another template</v-btn
           >
         </div>
-        <div class="d-flex justify-space-around py-10" v-if="!yourTemplate && !!templates.length">
-          <div v-for="(template, i) in templates" :key="i">
+        <div class="all-templates" v-if="!yourTemplate && !!templates.length">
+          <div class="py-4" v-for="(template, i) in templates" :key="i">
             <div v-html="template.html"></div>
             <v-btn
               :loading="isLoading"
@@ -139,6 +139,12 @@ export default {
 }
 .your-template {
   max-width: 650px;
-  margin: 0 auto;
+  padding: 40px 3%;
+}
+.all-templates {
+  padding: 40px 3%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 </style>
