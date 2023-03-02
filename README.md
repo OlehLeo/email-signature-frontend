@@ -13,7 +13,7 @@ This project is  written in Javascript.
 The following are some of the main libraries that used:
 * [Vue.js](https://vuejs.org/) - UI
 * [Vuetify](https://vuetifyjs.com/) - Styling
-* [vue-tel-input-vuetify](https://github.com/yogakurniawan/vue-tel-input-vuetify) - Styling and validation phone number
+* [vue-tel-input-vuetify](https://github.com/yogakurniawan/vue-tel-input-vuetify) - Styling and phone number validation 
 * [axios](https://axios-http.com/docs/intro) - Requests to API
 
 
