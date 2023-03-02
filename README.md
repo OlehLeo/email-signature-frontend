@@ -19,7 +19,7 @@ The following are some of the main libraries that used:
 
 # Project setup and Development
 
-* Run `npm ci` to install all dependencies for root directory and all included projects
+* Run `npm ci` to install all dependencies for root directory
 * Run `npm run serve` to compile and hot-reloads for development
 * Run `npm run build` to compile and minifie for production
 
